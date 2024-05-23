@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =============================== */
+/* =========== <HEADER =========== */
+/* =============================== */
+
+#headerContacto {
+    background: #7429bb;
+}
+
+
+
+/* ================================= */
+/* =========== <//HEADER =========== */
+/* ================================= */
+
+
+
+
+
+
+
+/* ============================= */
+/* =========== <MENU =========== */
+/* ============================= */
+#marcaNav {
+    background-image: linear-gradient(to right, #70127c, #158bcf);
+    background-clip: text;
+    color: transparent;
+}
+
+#menu li > a {
+    font-size: 18px;
+    color: #3f3f3f;
+    
+}
+
+#menu li > a:hover {
+    
+    color: #840bf5;    
+}
+
+
+#menu form > button {
+    font-size: 15px;
+}
+
+#menu {
+    box-shadow: -21px 25px 125px #000000;
+    z-index: 1;
+}
+
+#botonSuscribirse {
+    background-image: linear-gradient(to right, #70127c, #079ff7);
+    color: #e2dede;
+    border: none;
+}
+
+#botonSuscribirse:hover {
+    background-image: linear-gradient(to right, #70127c, #15567c);
+
+}
+
+/* =============================== */
+/* =========== <//MENU =========== */
+/* =============================== */
+
+
+
+/* ========================================== */
+/* =========== <SLIDER-CARRUSEL 1 =========== */
+/* ========================================== */
+
+.carousel-inner {
+    max-height: 39rem;
+}
+
+/* ============================================ */
+/* =========== <//SLIDER-CARRUSEL 1 =========== */
+/* ============================================ */
+
+
+
+
+
+
+/* ================================== */
+/* =========== <SECCION 1 =========== */
+/* ================================== */
+
+
+#seccion1 {
+    padding: 3em 5em 5em 5em;
+    background-color: #dad5db;
+
+}
+
+#divCartitas > div {
+    background-image: linear-gradient(to right, #530e5c, #113e58);
+    border-radius: 3em 0 3em 0;
+    width: 25rem;
+
+}
+
+.spanSeccion1 {
+    color: #a929b9;
+}
+
+/* ==================================== */
+/* =========== <//SECCION 1 =========== */
+/* ==================================== */
+
+
+
+
+
+
+
+/* ================================= */
+/* =========== <DIVISION =========== */
+/* ================================= */
+
+#division {
+    background-color:#502177;
+    color: #ffffff;
+}
+
+#linkProductos {
+    transition: all 0.1s;
+    color: #f5d02a;
+}
+
+#linkProductos:hover {
+    color: rgb(221, 121, 235);
+}
+
+
+/* =================================== */
+/* =========== <//DIVISION =========== */
+/* =================================== */
+
+
+
+
+
+
+/* ================================== */
+/* =========== <SECCION 2 =========== */
+/* ================================== */
+
+
+#seccion2 {
+    background-color: #dad5db;
+}
+
+#cartitaSeccion2 > div {
+    background-color: #6d5866;
+    width: 20em;
+    height: 20em;
+    justify-content: center;
+}
+
+.xd > img {
+    width: 10em;
+
+}
+
+
+/* ==================================== */
+/* =========== <//SECCION 2 =========== */
+/* ==================================== */
+
+
+
+
+
+
+
+
+/* =============================== */
+/* =========== <FOOTER =========== */
+/* =============================== */
+
+footer {
+    background:#1a0730;
+}
+
+#twitter, #instagram {
+    color: white;
+}
+
+
+
+
+/* ================================= */
+/* =========== <//FOOTER =========== */
+/* ================================= */

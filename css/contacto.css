@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+
+/* =============================== */
+/* =========== <HEADER =========== */
+/* =============================== */
+
+#headerContacto {
+    background: #7429bb;
+}
+
+
+
+/* ================================= */
+/* =========== <//HEADER =========== */
+/* ================================= */
+
+
+
+
+
+
+
+/* ============================= */
+/* =========== <MENU =========== */
+/* ============================= */
+#marcaNav {
+    background-image: linear-gradient(to right, #70127c, #158bcf);
+    background-clip: text;
+    color: transparent;
+}
+
+#menu li > a {
+    font-size: 18px;
+    color: #3f3f3f;
+    
+}
+
+#menu li > a:hover {
+    
+    color: #840bf5;    
+}
+
+
+#menu form > button {
+    font-size: 15px;
+}
+
+#menu {
+    box-shadow: -21px 25px 125px #000000;
+    z-index: 1;
+}
+
+#botonSuscribirse {
+    background-image: linear-gradient(to right, #70127c, #079ff7);
+    color: #e2dede;
+    border: none;
+}
+
+#botonSuscribirse:hover {
+    background-image: linear-gradient(to right, #70127c, #15567c);
+
+}
+
+/* =============================== */
+/* =========== <//MENU =========== */
+/* =============================== */
