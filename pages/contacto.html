@@ -4,10 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINK BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+    <!-- LINK BOOTSTRAP ICONS  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- LINK A MI CSS -->
     <link rel="stylesheet" href="../css/contacto.css">
-    <title>Document</title>
+
+    <title>TangoMarket Argentina - Contacto</title>
 </head>
 
 <body>
@@ -23,9 +32,10 @@
         <p class="text-light mb-0 p-2 fs-6">Contactanos +54 9 11 2345 6789</p>
     </header>
 
-    <!-- ==================================== -->
+    <!-- =================================== -->
     <!-- ============ <//HEADER> ============ -->
-    <!-- ==================================== -->
+    <!-- =================================== -->
+
 
 
 
@@ -47,21 +57,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0 dmx-lg-5 ms-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+                        <a class="nav-link active me-2" aria-current="page" href="../index.html"><i
+                                class="bi bi-house-door-fill"></i> Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/productos.html">Productos</a>
+                        <a class="nav-link me-2" href="./productos.html"><i class="bi bi-cart4"></i> Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/contacto.html">Contacto</a>
+                        <a class="nav-link" href="./contacto.html"><i class="bi bi-person-lines-fill"></i> Contacto</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Correo electrónico" aria-label="email">
-                    <button id="botonSuscribirse" class="btn" type="button">Suscribete</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -77,22 +84,58 @@
 
     <!-- FORMULARIO -->
 
+    <section id="seccionFormulario">
 
-    <form action="" class="d-flex justify-content-center align-content-center m-5">
-        <label for="">Nombre</label>
-        <input type="text">
+        <form id="formContacto" class="container-fluid pt-5 d-flex text-center flex-column w-25 justify-content-center">
+            <div class="mb-3">
+                <label for="inputEmail" class="form-label"><span class="text-white">Correo
+                        electrónico</span></label>
+                <input type="email" placeholder="Escribí tu correo electrónico" class="form-control"
+                    id="inputEmail" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="inputNombre" class="form-label"><span class="text-white">Nombre</span></label>
+                <input type="text" placeholder="Escribí tu nombre real" class="form-control" id="inputNombre">
 
-        <label for="">Apellido</label>
-        <input type="text">
-        
-        <button type="submit">Enviar datos</button>
-        
-    </form>
+            </div>
+            <div class="mb-3">
+                <label for="inputApellido" class="form-label"><span class="text-white">Apellido</span></label>
+                <input type="text" placeholder="Escribí tu apellido real" class="form-control" id="inputApellido">
+            </div>
 
 
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Comentá que sucede" id="motivoContacto"></textarea>
+                <label for="motivoContacto">Motivo de contacto</label>
+
+            </div>
+            <p class="mt-3 text-info">Es importante que aclare el <span class="text-warning">motivo</span> de su
+                contacto con detalles específicos. Por ejemplo, si nos contacta en representación de una <span
+                    class="text-warning">empresa</span> por temas de <span class="text-warning">distribución</span> o
+                por un <span class="text-warning">problema</span> con nuestros productos.
+            </p>
+            <p class="text-danger">De lo contrario, el mensaje será ignorado.</p>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1"><span class="text-white">Entendí y deseo
+                        contactar</span></label>
+            </div>
+            <button id="btnEnviar" type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </section>
+
+
+    <!-- JS BOOTSTRAP  -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <!-- JS SWEET ALERT -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- JS NATIVO -->
+    <script src="../js/contacto.js"></script>
 </body>
 
 </html>

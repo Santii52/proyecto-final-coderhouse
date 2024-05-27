@@ -61,21 +61,17 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mb-2 mb-lg-0 dmx-lg-5 ms-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+                        <a class="nav-link active me-2" aria-current="page" href="./index.html"><i class="bi bi-house-door-fill"></i> Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/productos.html">Productos</a>
+                        <a class="nav-link me-2" href="./pages/productos.html"><i class="bi bi-cart4"></i> Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./pages/contacto.html">Contacto</a>
+                        <a class="nav-link" href="./pages/contacto.html"><i class="bi bi-person-lines-fill"></i> Contacto</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Correo electrónico" aria-label="email">
-                    <button id="botonSuscribirse" class="btn" type="button">Suscribete</button>
-                </form>
             </div>
         </div>
     </nav>
@@ -126,7 +122,7 @@
         <h1 class="text-center fs-2 border-top border-1 border-dark-subtle pt-4">Bienvenido a <span
                 class="spanSeccion1">TangoMarket</span>, la tienda online de excelencia!</h1>
         <p class="text-center fs-4">¿Por qué deberías elegir <span class="spanSeccion1">TangoMarket</span>?</p>
-        <div id="divCartitas" class="d-flex flex-wrap justify-content-center pt-5">
+        <div id="divCartitas" class="d-flex flex-wrap pt-5 justify-content-center">
             <div class="p-4 mt-3 mb-3 me-3 text-center text-wrap ">
                 <p class="text-warning fs-5">Productos de calidad!</p>
                 <p class="text-light">Descubre nuestra selección de <span class="text-info">productos de calidad</span>. Cada artículo está
@@ -135,9 +131,9 @@
             </div>
             <div class="p-4 mt-3 mb-3 me-3 text-center ms-50 ">
                 <p class="text-warning fs-5">Atención al Cliente</p>
-                <p class="text-light">Nuestro equipo está aquí para ayudarte en cada paso del camino. Con un servicio
-                    personalizado y dedicado, estamos comprometidos a brindarte la mejor experiencia de compra.
-                    ¡Contactános hoy mismo para resolver tus dudas y necesidades</p>
+                <p class="text-light">Nuestro equipo está aquí para ayudarte en cada paso del camino. Con <span class="text-info">un servicio
+                    personalizado</span> y <span class="text-warning">dedicado</span>, estamos comprometidos a brindarte la <span class="text-warning">mejor experiencia de compra</span>.
+                    <span class="text-info">¡Contactános hoy mismo</span> para resolver tus dudas y necesidades</p>
             </div>
             <div class="p-4 mt-3 mb-3 text-center">
                 <p class="text-warning fs-5">Envios a todo el país</p>
@@ -184,52 +180,21 @@
 
 
 
+
+
+
+
+
+
+
+
     <!-- ==================================== -->
     <!-- ============ <SECCION 2 ============ -->
-    <!-- ==================================== -->
-
-    <section id="seccion2" class="d-flex flex-wrap justify-content-center pt-5">
-        <div id="cartitaSeccion2" class="container-fluid">
-            <p class="fs-2 text-center fw-medium"><span class="text-primary">Productos</span> recientes!</p>
-            <div class="container-fluid mb-2 xd m-auto row-cols-4 ">
-
-                <p>5 peso</p>
-            </div>
-            <div class="container-fluid mb-2 xd m-auto row-cols-4 ">
-                <img src="./images/prod-1.jpg" class="" alt="" srcset="">
-                <p>5 peso</p>
-            </div>
-            <div class="container-fluid mb-2 xd m-auto row-cols-4 ">
-
-                <p>5 peso</p>
-            </div>
-        </div>
-        <div>
-
-        </div>
-
-    </section>
-
-    <!-- ====================================== -->
-    <!-- ============ <//SECCION 2 ============ -->
-    <!-- ====================================== -->
-
-
-
-
-
-
-
-
-
-
-    <!-- ==================================== -->
-    <!-- ============ <SECCION 3 ============ -->
     <!-- ==================================== -->
         
         <!-- EN PROCESO -->
 
-        <section id="seccion3">
+        <section id="seccion2">
             <div id="notificaciones">
                 <p>
                     También puede suscribirse para recibir notificaciones sobre la llegada de nuevos productos y las actualizaciones de stock de los productos existentes.</p>
@@ -241,7 +206,7 @@
         </section>
     
     <!-- ====================================== -->
-    <!-- ============ <//SECCION 3 ============ -->
+    <!-- ============ <//SECCION 2 ============ -->
     <!-- ====================================== -->
 
 
@@ -270,6 +235,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <!-- LINK JS NATIVO -->
+    <script src="./js/index.js"></script>
 </body>
 
 </html>

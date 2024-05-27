@@ -4,6 +4,7 @@
 body {
     font-family: "Montserrat", sans-serif;
     overflow-x: hidden;
+    background-image: linear-gradient(to right, #7003ff41, #133c9646);
 }
 
 
@@ -31,9 +32,10 @@ body {
 /* =========== <MENU =========== */
 /* ============================= */
 #marcaNav {
-    background-image: linear-gradient(to right, #70127c, #158bcf);
+    background-image: linear-gradient(to right, #70127c, #158bcf); 
     background-clip: text;
     color: transparent;
+    color: #5c1ca5;
 }
 
 #menu li > a {
@@ -54,6 +56,7 @@ body {
 }
 
 #menu {
+
     z-index: 1;
     background-image: linear-gradient(to right, #2a04d136,#dbdbdb3f,#dbdbdb46 ,#3a0db633);
 }
@@ -75,85 +78,43 @@ body {
 
 
 
-/* ========================================== */
-/* =========== <SLIDER-CARRUSEL 1 =========== */
-/* ========================================== */
-
-.carousel-inner {
-    max-height: 39rem;
-}
-
-/* ============================================ */
-/* =========== <//SLIDER-CARRUSEL 1 =========== */
-/* ============================================ */
-
-
-
-
-
-
-/* ================================== */
-/* =========== <SECCION 1 =========== */
-/* ================================== */
-
-
-#seccion1 {
-    padding: 3em 5em 5em 5em;
-    background-image: linear-gradient(to right, #5a05f869,#dbdbdb,#dbdbdb ,#7245f07e);
-
-}
-
-#divCartitas > div {
-    background-image: linear-gradient(to right, #530e5c, #113e58);
-    border-radius: 3em 0 3em 0;
-    width: 25rem;
-
-
-
-}
-
-.spanSeccion1 {
-    color: #a929b9;
-}
-
-/* ==================================== */
-/* =========== <//SECCION 1 =========== */
-/* ==================================== */
-
-
-
-
 
 
 
 /* ================================= */
-/* =========== <DIVISION =========== */
+/* =========== <CARRITO> =========== */
 /* ================================= */
 
-#division {
-    background-color:#502177;
-    color: #ffffff;
+
+
+
+#carritoDeProductos {
+    gap: 8%;
+    background-image: linear-gradient(to right, #431449, #0d2838);
 }
 
-#linkProductos {
-    transition: all 0.1s;
-    color: #f5d02a;
+#carritoDeProductos > div {
+    background-image: linear-gradient(to right, #560e5f, #0d4668);
+    width: 18.5rem;
+    border-radius: 10px;
+    transition: background 0.1s;
 }
 
-#linkProductos:hover {
-    color: rgb(221, 121, 235);
+#carritoDeProductos > div:hover {
+    background-image: linear-gradient(to right, #560e5f, #091d29);
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
 }
 
 
 /* =================================== */
-/* =========== <//DIVISION =========== */
+/* =========== <//CARRITO> =========== */
 /* =================================== */
-
-
-
-
-
-
 
 
 
