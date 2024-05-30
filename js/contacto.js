@@ -25,7 +25,7 @@ botonEnviar.addEventListener('click', function() {
             icon: "error",
             title: "Error al enviar el formulario :(",
             text: "Por favor, completá todos los campos",
-            background: "#70127c",
+            background: "#5e23ca",
             color: "white",
         });
     } else if (motivoDeContacto === ""){

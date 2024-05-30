@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
+
+
+
 body {
     font-family: "Montserrat", sans-serif;
-    overflow-x: hidden;
 }
 
 
@@ -13,6 +15,7 @@ body {
 
 #headerContacto {
     background: #7429bb;
+    overflow-x: hidden;
 }
 
 
@@ -38,7 +41,7 @@ body {
 
 #menu li > a {
     font-size: 18px;
-    color: #3f3f3f;
+
 }
 
 
@@ -69,9 +72,50 @@ body {
 
 }
 
+#linkInicio {
+    color: #840bf5;  
+}
 /* =============================== */
 /* =========== <//MENU =========== */
 /* =============================== */
+
+
+
+
+
+/* ============================== */
+/* =========== <FONDO =========== */
+/* ============================== */
+
+
+#fondo {
+    background-image: url('../images/fondo-inicio.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    height: 39em;
+    overflow-x: hidden;
+}
+
+#fondo > div > p {
+    color: #e2dfdf;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 4em;
+    color: white;
+}
+
+
+/* ================================ */
+/* =========== <//FONDO =========== */
+/* ================================ */
+
+
+
+
 
 
 
@@ -80,7 +124,7 @@ body {
 /* ========================================== */
 
 .carousel-inner {
-    max-height: 39rem;
+    max-height: 50rem;
 }
 
 /* ============================================ */
@@ -96,29 +140,54 @@ body {
 /* =========== <SECCION 1 =========== */
 /* ================================== */
 
-
 #seccion1 {
     padding: 3em 5em 5em 5em;
-    background-image: linear-gradient(to right, #5a05f869,#dbdbdb,#dbdbdb ,#7245f07e);
+    background-image: linear-gradient(to right, #955dfcb2, #dbdbdb, #dbdbdb, #955dfcb2);
+    overflow-x: hidden;
+}
 
+#divCartitas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #divCartitas > div {
-    background-image: linear-gradient(to right, #530e5c, #113e58);
-    border-radius: 3em 0 3em 0;
-    width: 25rem;
+    background-image: linear-gradient(to right, #512ca7, #551c51);
+    border-radius: 3em 0  0; 
+    width: 300px; 
+    padding: 20px; 
 
-
-
+    margin: 10px; 
 }
 
-.spanSeccion1 {
+.spanPersonalizado {
     color: #a929b9;
 }
+
+.cartitaTitulo {
+    margin-bottom: 0.5em;
+}
+
+.card-text {
+    font-size: 1em;
+    
+}
+
+.degradadoTexto {
+    background: linear-gradient(to right, #a323a3, #b96524);
+    background-clip: text;
+    color: transparent;
+}
+
+
 
 /* ==================================== */
 /* =========== <//SECCION 1 =========== */
 /* ==================================== */
+
+
+
 
 
 
@@ -141,7 +210,7 @@ body {
 }
 
 #linkProductos:hover {
-    color: rgb(221, 121, 235);
+    color: #dd79eb;
 }
 
 
@@ -151,6 +220,33 @@ body {
 
 
 
+
+
+
+/* =================================== */
+/* =========== <SECCION 2> =========== */
+/* =================================== */
+
+
+#seccion2 {
+    overflow-x: hidden;
+    background-image: linear-gradient(to right, #955dfcb2, #dbdbdb, #dbdbdb, #955dfcb2);
+}
+
+#divContainerCards2 > div  {
+    background: linear-gradient(to right, #7004ecbe, #af7927);
+    margin: 1em;
+    border-radius: 10px;
+}
+
+
+#contactoTexto {
+    max-width: 600px;
+}
+
+/* ===================================== */
+/* =========== <//SECCION 2> =========== */
+/* ===================================== */
 
 
 
@@ -168,14 +264,10 @@ body {
 
 footer {
     background:#1a0730;
+    color: #9e9a9a;
+    line-height: 15px;
+
 }
-
-#twitter, #instagram {
-    color: white;
-}
-
-
-
 
 /* ================================= */
 /* =========== <//FOOTER =========== */

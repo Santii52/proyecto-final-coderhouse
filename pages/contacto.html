@@ -16,6 +16,8 @@
     <!-- LINK A MI CSS -->
     <link rel="stylesheet" href="../css/contacto.css">
 
+    <link rel="icon" type="image/png" href="../images/icono.png">
+
     <title>TangoMarket Argentina - Contacto</title>
 </head>
 
@@ -43,7 +45,7 @@
     <!-- =============================== -->
     <!-- ============ <NAV> ============ -->
     <!-- =============================== -->
-    <nav class="navbar navbar-expand-lg bg-body-secondary p-3 sticky-lg-top" id="menu">
+    <nav class="navbar navbar-expand-lg bg-body-secondary p-3" id="menu">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.html">
                 <!-- PARA CAMBIAR COLOR DE TEXTO USAR span class="text-primary" (EJEMPLO)  -->
@@ -82,16 +84,18 @@
 
 
 
-    <!-- FORMULARIO -->
+    <!-- ====================================== -->
+    <!-- ============ <FORMULARIO> ============ -->
+    <!-- ====================================== -->
 
-    <section id="seccionFormulario">
+    <section id="seccionFormulario" class="p-5">
+        <form id="formContacto" class="p-5 rounded-2 container-fluid h-auto d-flex flex-column w-100 justify-content-center">
 
-        <form id="formContacto" class="container-fluid pt-5 d-flex text-center flex-column w-25 justify-content-center">
             <div class="mb-3">
                 <label for="inputEmail" class="form-label"><span class="text-white">Correo
                         electrónico</span></label>
-                <input type="email" placeholder="Escribí tu correo electrónico" class="form-control"
-                    id="inputEmail" aria-describedby="emailHelp">
+                <input type="email" placeholder="Escribí tu correo electrónico" class="form-control" id="inputEmail"
+                    aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
                 <label for="inputNombre" class="form-label"><span class="text-white">Nombre</span></label>
@@ -109,21 +113,50 @@
                 <label for="motivoContacto">Motivo de contacto</label>
 
             </div>
-            <p class="mt-3 text-info">Es importante que aclare el <span class="text-warning">motivo</span> de su
+            <p class="mt-3 text-info text-center">Es importante que aclare el <span class="text-warning">motivo</span>
+                de su
                 contacto con detalles específicos. Por ejemplo, si nos contacta en representación de una <span
                     class="text-warning">empresa</span> por temas de <span class="text-warning">distribución</span> o
                 por un <span class="text-warning">problema</span> con nuestros productos.
             </p>
-            <p class="text-danger">De lo contrario, el mensaje será ignorado.</p>
+            <p class="text-danger text-center">De lo contrario, el mensaje será ignorado.</p>
 
-            <div class="mb-3 form-check">
+            <div class="d-flex justify-content-center mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1"><span class="text-white">Entendí y deseo
+                <label class="form-check-label" for="exampleCheck1"><span class="text-white ms-1">Entendí y deseo
                         contactar</span></label>
             </div>
-            <button id="btnEnviar" type="submit" class="btn btn-primary">Enviar</button>
+            <div class="d-flex justify-content-center">
+                <button id="btnEnviar" type="submit" class="w-lg-25 align-content-center btn btn-primary">Enviar</button>
+            </div>
         </form>
     </section>
+
+    <!-- ======================================== -->
+    <!-- ============ <//FORMULARIO> ============ -->
+    <!-- ======================================== -->
+
+
+    <!-- ====================================== -->
+    <!-- ============ <FOOTER ================= -->
+    <!-- ====================================== -->
+    <footer class="pt-5 pb-4 text-center h-100 fs-6">
+        <address>© 2024 Todos los derechos reservados. Propiedad de TangoMarket.</address>
+        <p>Para más <span class="text-info">información</span> no dude en <span class="text-warning">contactarnos</span>
+        </p>
+    </footer>
+    <!-- ======================================== -->
+    <!-- ============ <//FOOTER ================= -->
+    <!-- ======================================== -->
+
+
+
+
+
+
+
+
+
 
 
     <!-- JS BOOTSTRAP  -->
@@ -136,6 +169,9 @@
 
     <!-- JS NATIVO -->
     <script src="../js/contacto.js"></script>
+
+
+
 </body>
 
 </html>

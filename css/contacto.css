@@ -4,6 +4,7 @@
 body {
     font-family: "Montserrat", sans-serif;
     overflow-x: hidden;
+    background-image: linear-gradient(to right, #5a05f869,#dbdbdb,#dbdbdb ,#7245f07e);
 }
 
 
@@ -54,7 +55,6 @@ body {
 }
 
 #menu {
-    z-index: 1;
     background-image: linear-gradient(to right, #2a04d136,#dbdbdb3f,#dbdbdb46 ,#3a0db633);
 }
 
@@ -79,12 +79,47 @@ body {
 /* ==================================== */
 /* =========== <FORMULARIO> =========== */
 /* ==================================== */
+    #seccionFormulario {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
 
-#seccionFormulario {
-    background-color: #482950;
-}
+    #formContacto {
+        background-color: #2c154b;
+        width: 80%; /* Ajusta el ancho del formulario al 80% del contenedor */
+        max-width: 60%; /* Establece un ancho máximo para el formulario */
+    }
 
+    #formContacto > p {
+        font-size: 14px;
+    }
 
 /* ====================================== */
 /* =========== <//FORMULARIO> =========== */
 /* ====================================== */
+
+
+
+
+
+
+/* =============================== */
+/* =========== <FOOTER =========== */
+/* =============================== */
+
+footer {
+    background:#1a0730;
+    color: #9e9a9a;
+    line-height: 15px;
+
+}
+
+
+
+
+
+/* ================================= */
+/* =========== <//FOOTER =========== */
+/* ================================= */

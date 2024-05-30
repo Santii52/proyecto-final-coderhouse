@@ -35,7 +35,7 @@ body {
     background-image: linear-gradient(to right, #70127c, #158bcf); 
     background-clip: text;
     color: transparent;
-    color: #5c1ca5;
+    color: #5e23ca;
 }
 
 #menu li > a {
@@ -131,9 +131,6 @@ footer {
     background:#1a0730;
 }
 
-#twitter, #instagram {
-    color: white;
-}
 
 
 
