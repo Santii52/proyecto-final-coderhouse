@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TangoMarket Argentina - Productos</title>
 
     <!-- LINK BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
 
     <!-- LINK BOOTSTRAP ICONS  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -16,43 +16,23 @@
     <!-- LINK A MI CSS -->
     <link rel="stylesheet" href="../css/productos.css">
 
-    <link rel="icon" type="image/png" href="../images/icono.png">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <title>TangoMarket Argentina - Productos</title>
+    <link rel="icon" type="image/png" href="../images/icono.png">
 </head>
 
 <body>
-
-
-
-
-    <!-- ================================== -->
-    <!-- ============ <HEADER> ============ -->
-    <!-- ================================== -->
-
-    <!-- VA A OCUPAR EL ANCHO COMPLETO DE LA PANTALLA : container-fluid  -->
-    <header id="headerContacto" class="container-fluid d-flex justify-content-center">
-        <p class="text-light mb-0 p-2 fs-6">Contactanos +54 9 11 2345 6789</p>
+    <!-- HEADER -->
+    <header id="headerContacto" class="container-fluid d-flex justify-content-center bg-dark text-white">
+        <p class="mb-0 p-2 fs-6">Contactanos +54 9 11 2345 6789</p>
     </header>
 
-    <!-- =================================== -->
-    <!-- ============ <//HEADER> ============ -->
-    <!-- =================================== -->
-
-
-
-
-
-    <!-- =============================== -->
-    <!-- ============ <NAV> ============ -->
-    <!-- =============================== -->
-    <nav class="navbar navbar-expand-lg bg-body-secondary p-3 sticky-lg-top" id="menu">
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg bg-body-secondary p-3 sticky-top" id="menu">
         <div class="container-fluid">
             <a class="navbar-brand" href="../index.html">
-                <!-- PARA CAMBIAR COLOR DE TEXTO USAR span class="text-primary" (EJEMPLO)  -->
-                <span id="marcaNav" class="fs-5 fw-bold">
-                    TangoMarket
-                </span>
+                <span id="marcaNav" class="fs-5 fw-bold">TangoMarket</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -60,10 +40,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0 dmx-lg-5 ms-lg-5">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-5">
                     <li class="nav-item">
                         <a class="nav-link active me-2" aria-current="page" href="../index.html"><i
-                                class="bi bi-house-door-fill"></i> Inicio</a>
+                                class="bi bi-house-door"></i> Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link me-2" href="./productos.html"><i class="bi bi-cart4"></i> Productos</a>
@@ -75,126 +55,61 @@
             </div>
         </div>
     </nav>
-    <!-- ================================= -->
-    <!-- ============ <//NAV> ============ -->
-    <!-- ================================= -->
+
+    <body>
 
 
-
-
-
-    <!-- ============================================= -->
-    <!-- ============ <CARRITO CONTAINER> ============ -->
-    <!-- ============================================= -->
-
-    <h1 class="text-center text-body-emphasis mt-5 mb-5">
-        Productos de TangoMarket!
-    </h1>
-
-    <section id="carritoDeProductos"
-        class="container p-5 h-100 w-80 mb-5 rounded-2 d-flex flex-wrap justify-content-center">
-        <!--  <div id="cartaProducto" class="p-5 mt-2  text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
+        <!-- CARRITO DE COMPRAS -->
+        <div class="container">
+            <h1 class="text-center my-4 fs-4">Lista de Productos</h1>
+            <div id="cart" class="mb-4 rounded-5">
+                <table>
+                    <thead class="text-white fw-normal">
+                        <tr class="fw-medium">
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <button id="clearCartBtn" class="btn btn-danger" disabled>Vaciar Carrito</button>
+                </div>
+                <h5>Total: <span id="totalPrice">$0.00</span></h5>
+            </div>
+            <button id="checkoutBtn" class="btn mb-4" disabled>Pagar</button>
         </div>
-        <div class="p-5 mt-2 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
+
+        <!-- PRODUCTOS -->
+        <div class="container">
+
+            <div id="availableProducts" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
+            <div id="loading" class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
         </div>
-        <div class="p-5 mt-2 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div> -->
-        <div class="p-5 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div>
-        <div class="p-5 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div>
-        <div class="p-5 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div>
-        <div class="p-5 mt-5 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div>
-        <div class="p-5 mt-5 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div>
-        <div class="p-5 mt-5 text-center text-white">
-            <img src="https://s3.sa-east-1.amazonaws.com/www.vaypol.com.ar/variants/6abs9inkvrtj5bto10b911j9e5pk/c77c2a06864ac9aca38dc5bd9371de015471edcdbf322dfb14411689bf968ae5"
-                alt="producto1">
-            <p class="mt-2 fs-5 text-warning">Producto 1</p>
-            <p class="fw-semibold">$199<span>.99</span></p>
-            <button>Añadir al Carrito</button>
-        </div>
-    </section>
 
-
-
-    <!-- =============================================== -->
-    <!-- ============ <//CARRITO CONTAINER> ============ -->
-    <!-- =============================================== -->
-
-
-
-
-
-
-    <!-- ====================================== -->
-    <!-- ============ <FOOTER ================= -->
-    <!-- ====================================== -->
-    <footer class="pt-5 pb-4 text-center h-100 fs-6">
+    </body>
+    <!-- FOOTER -->
+    <footer class="pt-5 pb-4 text-center">
         <address>© 2024 Todos los derechos reservados. Propiedad de TangoMarket.</address>
         <p>Para más <span class="text-info">información</span> no dude en <span class="text-warning">contactarnos</span>
         </p>
     </footer>
-    <!-- ======================================== -->
-    <!-- ============ <//FOOTER ================= -->
-    <!-- ======================================== -->
 
-
-
-
-
-
-
-
-
-    <!-- LINK JS BOOTSTRAP -->
+    <!-- JS BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <!-- LINK JS NATIVO -->
+    <!-- JS NATIVO -->
     <script src="../js/productos.js"></script>
 </body>
 

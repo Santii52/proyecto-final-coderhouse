@@ -1,46 +1,72 @@
-/* Swal.fire({
-    icon: "success",
-    title: "Enviaste el formulario con éxito!",
-    text: "En breve serás informado sobre la situación",
+document.addEventListener("DOMContentLoaded", function () {
+    const formulario = document.getElementById("formContacto");
 
-});
- */
+    formulario.addEventListener("submit", function (evento) {
+        evento.preventDefault();
 
-/* script del formulario */
+        const entradaEmail = document.getElementById("inputEmail");
+        const entradaNombre = document.getElementById("inputNombre");
+        const entradaApellido = document.getElementById("inputApellido");
+        const motivoContacto = document.getElementById("motivoContacto");
+        const casillaVerificacion = document.getElementById("exampleCheck1");
 
-const inputEmail = document.querySelector('#inputEmail');
-const inputNombre = document.querySelector('#inputNombre') ;
-const inputApellido = document.querySelector('#inputApellido');
-const botonEnviar = document.querySelector('#btnEnviar');
-const motivoDeContacto = document.querySelector('#motivoContacto')
+        const datosFormulario = {
+            email: entradaEmail.value.trim(),
+            nombre: entradaNombre.value.trim(),
+            apellido: entradaApellido.value.trim(),
+            motivo: motivoContacto.value.trim()
+        };
 
+        const validaciones = [
+            { campo: datosFormulario.email, mensajeError: 'Por favor, introduzca un correo electrónico válido!', condicion: esCorreoValido },
+            { campo: datosFormulario.nombre, mensajeError: 'Por favor, completá tu nombre.', condicion: esCadenaNoVacia },
+            { campo: datosFormulario.apellido, mensajeError: 'Por favor, completá tu apellido.', condicion: esCadenaNoVacia },
+            { campo: datosFormulario.motivo, mensajeError: 'Por favor, proporciona un motivo de contacto.', condicion: esCadenaNoVacia },
+            { campo: casillaVerificacion.checked, mensajeError: 'Por favor, confirma que entendiste y deseas contactar.', condicion: estaMarcado }
+        ];
 
-botonEnviar.addEventListener('click', function() {
-    // Verificar si los campos de entrada están vacíos
-    event.preventDefault();
-    
-    if (inputApellido.value === "" || inputNombre.value === "" || inputEmail.value === "") {
-        // Mostrar una alerta con SweetAlert2 para campos vacíos
+        for (const { campo, mensajeError, condicion } of validaciones) {
+            if (!condicion(campo)) {
+                mostrarError(mensajeError);
+                return;
+            }
+        }
+
+        console.log("Datos del formulario:", datosFormulario);
+        localStorage.setItem('datosFormulario', JSON.stringify(datosFormulario));
+        mostrarMensajeExito('El formulario se ha enviado correctamente.');
+
+        setTimeout(function () {
+            window.location.href = '../index.html';
+        }, 2000);
+    });
+
+    function esCorreoValido(correo) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(correo);
+    }
+
+    function esCadenaNoVacia(valor) {
+        return valor !== "";
+    }
+
+    function estaMarcado(marcado) {
+        return marcado;
+    }
+
+    function mostrarError(mensajeError) {
         Swal.fire({
-            icon: "error",
-            title: "Error al enviar el formulario :(",
-            text: "Por favor, completá todos los campos",
-            background: "#5e23ca",
-            color: "white",
+            icon: 'error',
+            title: 'Error',
+            text: mensajeError
         });
-    } else if (motivoDeContacto === ""){
+    }
 
+    function mostrarMensajeExito(mensaje) {
         Swal.fire({
-            icon: "error",
-            title: "Error al enviar el formulario, no completaste el motivo de contacto",
-            text: "Por favor completá la información",
-        });
-    }  else {
-        // Si todos los campos están completos, mostrar un mensaje de éxito
-        Swal.fire({
-            icon: "success",
-            title: "Enviaste el formulario con éxito!",
-            text: "En breve serás informado sobre la situación :)",
+            icon: 'success',
+            title: 'Éxito',
+            text: mensaje
         });
     }
 });
