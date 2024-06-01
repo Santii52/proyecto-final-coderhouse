@@ -56,47 +56,41 @@
         </div>
     </nav>
 
-    <body>
-
-
-        <!-- CARRITO DE COMPRAS -->
-        <div class="container">
-            <h1 class="text-center my-4 fs-4">Lista de Productos</h1>
-            <div id="cart" class="mb-4 rounded-5">
-                <table>
-                    <thead class="text-white fw-normal">
-                        <tr class="fw-medium">
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Subtotal</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <div>
-                    <button id="clearCartBtn" class="btn" disabled>Vaciar Carrito</button>
-                </div>
-                <h5>Total: <span id="totalPrice">$0.00</span></h5>
-            </div>
-            <button id="checkoutBtn" class="btn mb-4" disabled>Pagar</button>
+    <!-- CARRITO DE COMPRAS -->
+    <div class="container">
+        <div id="cart" class="mt-5 mb-4 rounded-5">
+            <table>
+                <thead class="text-white fw-normal">
+                    <tr class="fw-medium">
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-white"></tbody>
+            </table>
         </div>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <button id="clearCartBtn" class="btn" disabled>Vaciar Carrito</button>
+            </div>
+            <h5>Total: <span id="totalPrice">$0.00</span></h5>
+        </div>
+        <button id="checkoutBtn" class="btn mb-4" disabled>Pagar</button>
+    </div>
 
-        <!-- PRODUCTOS -->
-        <div class="container">
-
-            <div id="availableProducts" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
-            <div id="loading" class="text-center">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
+    <!-- PRODUCTOS -->
+    <div class="container">
+        <div id="productosDisponibles" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"></div>
+        <div id="loading" class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
         </div>
+    </div>
 
-    </body>
     <!-- FOOTER -->
     <footer class="pt-5 pb-4 text-center">
         <address>© 2024 Todos los derechos reservados. Propiedad de TangoMarket.</address>

@@ -1,72 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const formulario = document.getElementById("formContacto");
+document.addEventListener("DOMContentLoaded", async function () {
+    const url = 'https://api.mercadolibre.com/sites/MLA/search?q=iphone';
 
-    formulario.addEventListener("submit", function (evento) {
-        evento.preventDefault();
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
 
-        const entradaEmail = document.getElementById("inputEmail");
-        const entradaNombre = document.getElementById("inputNombre");
-        const entradaApellido = document.getElementById("inputApellido");
-        const motivoContacto = document.getElementById("motivoContacto");
-        const casillaVerificacion = document.getElementById("exampleCheck1");
+        // Verificar si 'data' y 'data.results' están definidos y 'data.results' es un array
+        if (data && Array.isArray(data.results)) {
+            const contenedorProductos = document.getElementById('productosDisponibles');
 
-        const datosFormulario = {
-            email: entradaEmail.value.trim(),
-            nombre: entradaNombre.value.trim(),
-            apellido: entradaApellido.value.trim(),
-            motivo: motivoContacto.value.trim()
-        };
-
-        const validaciones = [
-            { campo: datosFormulario.email, mensajeError: 'Por favor, introduzca un correo electrónico válido!', condicion: esCorreoValido },
-            { campo: datosFormulario.nombre, mensajeError: 'Por favor, completá tu nombre.', condicion: esCadenaNoVacia },
-            { campo: datosFormulario.apellido, mensajeError: 'Por favor, completá tu apellido.', condicion: esCadenaNoVacia },
-            { campo: datosFormulario.motivo, mensajeError: 'Por favor, proporciona un motivo de contacto.', condicion: esCadenaNoVacia },
-            { campo: casillaVerificacion.checked, mensajeError: 'Por favor, confirma que entendiste y deseas contactar.', condicion: estaMarcado }
-        ];
-
-        for (const { campo, mensajeError, condicion } of validaciones) {
-            if (!condicion(campo)) {
-                mostrarError(mensajeError);
-                return;
-            }
+            data.results.forEach(producto => {
+                if (producto && producto.title && producto.price && producto.permalink && producto.thumbnail) {
+                    const tarjetaProducto = document.createElement('div');
+                    tarjetaProducto.classList.add('col');
+                    tarjetaProducto.innerHTML = `
+                        <div class="card h-100">
+                            <img src="${producto.thumbnail}" class="card-img-top" alt="${producto.title}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${producto.title}</h5>
+                                <p class="card-text">${producto.price}</p>
+                                <a href="${producto.permalink}" class="btn btn-primary mt-auto" target="_blank">Ver Producto</a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    contenedorProductos.appendChild(tarjetaProducto);
+                } else {
+                    console.error("Uno o más productos tienen propiedades indefinidas:", producto);
+                }
+            });
+        } else {
+            console.error("La propiedad 'results' en la respuesta no está definida o no es un array:", data);
         }
-
-        console.log("Datos del formulario:", datosFormulario);
-        localStorage.setItem('datosFormulario', JSON.stringify(datosFormulario));
-        mostrarMensajeExito('El formulario se ha enviado correctamente.');
-
-        setTimeout(function () {
-            window.location.href = '../index.html';
-        }, 2000);
-    });
-
-    function esCorreoValido(correo) {
-        const re = /\S+@\S+\.\S+/;
-        return re.test(correo);
-    }
-
-    function esCadenaNoVacia(valor) {
-        return valor !== "";
-    }
-
-    function estaMarcado(marcado) {
-        return marcado;
-    }
-
-    function mostrarError(mensajeError) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: mensajeError
-        });
-    }
-
-    function mostrarMensajeExito(mensaje) {
-        Swal.fire({
-            icon: 'success',
-            title: 'Éxito',
-            text: mensaje
-        });
+    } catch (error) {
+        console.error('Error al obtener datos:', error);
     }
 });

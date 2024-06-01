@@ -78,10 +78,10 @@ body {
 
 
 
-
+/* 
 .container {
     height: 100vh;
-}
+} */
 
 
 
@@ -133,7 +133,11 @@ body {
     margin-top: 20px;
 }
 
-
+.card {
+    color: white;
+    background: linear-gradient(to right, #7004ecbe, #af7927);
+    border: 1px solid black;
+}
 
 
 

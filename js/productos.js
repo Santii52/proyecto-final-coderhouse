@@ -1,32 +1,81 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const url = 'https://real-time-amazon-data.p.rapidapi.com/search?query=Telefono&page=1&country=US';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'cd417f0d1emsh54a298f04c63a40p1c7e34jsneb5ece4bf8cb',
-            'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
-        }
-    };
-
+    const url = 'https://api.mercadolibre.com/sites/MLA/search?q=iphone';
+    
     try {
-        const response = await fetch(url, options);
+        const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
 
-        // Verificar si 'datos' y 'datos.productos' están definidos y 'datos.productos' es un array
-        if (data && data.data && Array.isArray(data.data.products)) {
+        if (data && Array.isArray(data.results)) {
             const contenedorProductos = document.getElementById('productosDisponibles');
+            const carrito = [];
 
-            data.data.products.forEach(producto => {
-                if (producto && producto.product_title && producto.product_price && producto.product_url && producto.product_photo) {
+            // Función para agregar un producto al carrito
+            function agregarAlCarrito(producto) {
+                carrito.push(producto);
+                actualizarCarrito();
+            }
+
+            // Función para eliminar un producto del carrito
+            function eliminarDelCarrito(index) {
+                carrito.splice(index, 1);
+                actualizarCarrito();
+            }
+
+            // Función para vaciar el carrito
+            function vaciarCarrito() {
+                carrito.length = 0;
+                actualizarCarrito();
+            }
+
+            // Función para actualizar el contenido del carrito y calcular el precio total
+            function actualizarCarrito() {
+                const cuerpoTablaCarrito = document.querySelector('#cart tbody');
+                cuerpoTablaCarrito.innerHTML = '';
+
+                let total = 0;
+
+                carrito.forEach((producto, index) => {
+                    const elementoCarrito = document.createElement('tr');
+                    elementoCarrito.innerHTML = `
+                        <td>${producto.title}</td>
+                        <td>$${producto.price}</td>
+                        <td>1</td>
+                        <td>$${producto.price}</td>
+                        <td><button class="btn btn-danger btn-sm boton-eliminar-item" data-index="${index}">Eliminar</button></td>
+                    `;
+                    cuerpoTablaCarrito.appendChild(elementoCarrito);
+
+                    total += producto.price;
+                });
+
+                document.getElementById('totalPrice').textContent = `$${total.toFixed(2)}`;
+
+                const clearCartBtn = document.getElementById('clearCartBtn');
+                clearCartBtn.disabled = carrito.length === 0;
+
+                const checkoutBtn = document.getElementById('checkoutBtn');
+                checkoutBtn.disabled = carrito.length === 0;
+
+                const botonesEliminar = document.querySelectorAll('.boton-eliminar-item');
+                botonesEliminar.forEach(boton => {
+                    boton.addEventListener('click', (event) => {
+                        const index = parseInt(event.target.dataset.index);
+                        eliminarDelCarrito(index);
+                    });
+                });
+            }
+
+            // Renderizar productos
+            data.results.forEach(producto => {
+                if (producto && producto.title && producto.price && producto.permalink && producto.thumbnail) {
                     const tarjetaProducto = document.createElement('div');
                     tarjetaProducto.classList.add('col');
                     tarjetaProducto.innerHTML = `
                         <div class="card h-100">
-                            <img src="${producto.product_photo}" class="card-img-top" alt="${producto.product_title}">
+                            <img src="${producto.thumbnail}" class="card-img-top" alt="${producto.title}">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">${producto.product_title}</h5>
-                                <p class="card-text">${producto.product_price}</p>
+                                <h5 class="card-title">${producto.title}</h5>
+                                <p class="card-text">$${producto.price}</p>
                                 <button class="btn btn-primary mt-auto boton-agregar-carrito">Añadir al Carrito</button>
                             </div>
                         </div>
@@ -40,49 +89,20 @@ document.addEventListener("DOMContentLoaded", async function () {
                     console.error("Uno o más productos tienen propiedades indefinidas:", producto);
                 }
             });
+
+            // Evento para vaciar el carrito
+            document.getElementById('clearCartBtn').addEventListener('click', () => {
+                vaciarCarrito();
+            });
+
+            // Evento para procesar el pago (simulado)
+            document.getElementById('checkoutBtn').addEventListener('click', () => {
+                alert('Proceso de pago no implementado.');
+            });
         } else {
-            console.error("La propiedad 'products' en la respuesta no está definida o no es un array:", data);
+            console.error("La propiedad 'results' en la respuesta no está definida o no es un array:", data);
         }
     } catch (error) {
         console.error('Error al obtener datos:', error);
     }
-
-    function agregarAlCarrito(producto) {
-        const cuerpoTablaCarrito = document.querySelector('#carrito tbody');
-        const elementoCarrito = document.createElement('tr');
-        elementoCarrito.innerHTML = `
-            <td>${producto.product_title}</td>
-            <td>${producto.product_price}</td>
-            <td>1</td>
-            <td>${producto.product_price}</td>
-            <td><button class="btn btn-danger btn-sm boton-eliminar-item">Eliminar</button></td>
-        `;
-        cuerpoTablaCarrito.appendChild(elementoCarrito);
-        actualizarPrecioTotal();
-        
-        elementoCarrito.querySelector('.boton-eliminar-item').addEventListener('click', () => {
-            elementoCarrito.remove();
-            actualizarPrecioTotal();
-        });
-    }
-
-    function actualizarPrecioTotal() {
-        const itemsCarrito = document.querySelectorAll('#carrito tbody tr');
-        let total = 0;
-        itemsCarrito.forEach(item => {
-            const textoPrecio = item.children[3].textContent;
-            const precio = parseFloat(textoPrecio.replace('$', ''));
-            total += precio;
-        });
-        document.getElementById('precioTotal').textContent = `$${total.toFixed(2)}`;
-    }
-
-    document.getElementById('botonLimpiarCarrito').addEventListener('click', () => {
-        document.querySelector('#carrito tbody').innerHTML = '';
-        actualizarPrecioTotal();
-    });
-
-    document.getElementById('botonPagar').addEventListener('click', () => {
-        alert('Proceso de pago no implementado.');
-    });
 });
