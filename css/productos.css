@@ -77,12 +77,12 @@ body {
 
 
 
-/* body */
+
 
 .container {
     height: 100vh;
 }
-/* <//body */
+
 
 
 /* Estilos para las imágenes de productos */
@@ -101,16 +101,13 @@ body {
 
 /* Estilos para el contenedor del carrito */
 #cart {
-    background-color: #9f34e634;
+    background-image: linear-gradient(to right, #70127c, #15567c);
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
 
 }
 
-{
-    background-color: #9f34e634;
-}
 
 /* Estilos para el título del carrito */
 #cart h2 {
@@ -143,6 +140,14 @@ body {
 /*  */
 
 #checkoutBtn {
+    background-color: #691b7c;
+    border: none;
+    color: white;
+}
+
+
+
+#clearCartBtn {
     background-color: #691b7c;
     border: none;
     color: white;

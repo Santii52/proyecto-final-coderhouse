@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async function () {
-    const url = 'https://real-time-amazon-data.p.rapidapi.com/search?query=Phone&page=1&country=US';
+    const url = 'https://real-time-amazon-data.p.rapidapi.com/search?query=Telefono&page=1&country=US';
     const options = {
         method: 'GET',
         headers: {
@@ -13,75 +13,76 @@ document.addEventListener("DOMContentLoaded", async function () {
         const data = await response.json();
         console.log(data);
 
-        if (data && data.data && data.data.products && Array.isArray(data.data.products)) {
-            const productsContainer = document.getElementById('availableProducts');
+        // Verificar si 'datos' y 'datos.productos' están definidos y 'datos.productos' es un array
+        if (data && data.data && Array.isArray(data.data.products)) {
+            const contenedorProductos = document.getElementById('productosDisponibles');
 
-            data.data.products.forEach(product => {
-                if (product && product.product_title && product.product_price && product.product_url && product.product_photo) {
-                    const productCard = document.createElement('div');
-                    productCard.classList.add('col');
-                    productCard.innerHTML = `
+            data.data.products.forEach(producto => {
+                if (producto && producto.product_title && producto.product_price && producto.product_url && producto.product_photo) {
+                    const tarjetaProducto = document.createElement('div');
+                    tarjetaProducto.classList.add('col');
+                    tarjetaProducto.innerHTML = `
                         <div class="card h-100">
-                            <img src="${product.product_photo}" class="card-img-top" alt="${product.product_title}">
+                            <img src="${producto.product_photo}" class="card-img-top" alt="${producto.product_title}">
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">${product.product_title}</h5>
-                                <p class="card-text">${product.product_price}</p>
-                                <button class="btn btn-primary mt-auto add-to-cart-btn">Añadir al Carrito</button>
+                                <h5 class="card-title">${producto.product_title}</h5>
+                                <p class="card-text">${producto.product_price}</p>
+                                <button class="btn btn-primary mt-auto boton-agregar-carrito">Añadir al Carrito</button>
                             </div>
                         </div>
                     `;
                     
-                    const addToCartBtn = productCard.querySelector('.add-to-cart-btn');
-                    addToCartBtn.addEventListener('click', () => addToCart(product));
+                    const botonAgregarCarrito = tarjetaProducto.querySelector('.boton-agregar-carrito');
+                    botonAgregarCarrito.addEventListener('click', () => agregarAlCarrito(producto));
                     
-                    productsContainer.appendChild(productCard);
+                    contenedorProductos.appendChild(tarjetaProducto);
                 } else {
-                    console.error("Uno o más productos tienen propiedades indefinidas:", product);
+                    console.error("Uno o más productos tienen propiedades indefinidas:", producto);
                 }
             });
         } else {
             console.error("La propiedad 'products' en la respuesta no está definida o no es un array:", data);
         }
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error al obtener datos:', error);
     }
 
-    function addToCart(product) {
-        const cartTableBody = document.querySelector('#cart tbody');
-        const cartItem = document.createElement('tr');
-        cartItem.innerHTML = `
-            <td>${product.product_title}</td>
-            <td>${product.product_price}</td>
+    function agregarAlCarrito(producto) {
+        const cuerpoTablaCarrito = document.querySelector('#carrito tbody');
+        const elementoCarrito = document.createElement('tr');
+        elementoCarrito.innerHTML = `
+            <td>${producto.product_title}</td>
+            <td>${producto.product_price}</td>
             <td>1</td>
-            <td>${product.product_price}</td>
-            <td><button class="btn btn-danger btn-sm remove-item-btn">Eliminar</button></td>
+            <td>${producto.product_price}</td>
+            <td><button class="btn btn-danger btn-sm boton-eliminar-item">Eliminar</button></td>
         `;
-        cartTableBody.appendChild(cartItem);
-        updateTotalPrice();
+        cuerpoTablaCarrito.appendChild(elementoCarrito);
+        actualizarPrecioTotal();
         
-        cartItem.querySelector('.remove-item-btn').addEventListener('click', () => {
-            cartItem.remove();
-            updateTotalPrice();
+        elementoCarrito.querySelector('.boton-eliminar-item').addEventListener('click', () => {
+            elementoCarrito.remove();
+            actualizarPrecioTotal();
         });
     }
 
-    function updateTotalPrice() {
-        const cartItems = document.querySelectorAll('#cart tbody tr');
+    function actualizarPrecioTotal() {
+        const itemsCarrito = document.querySelectorAll('#carrito tbody tr');
         let total = 0;
-        cartItems.forEach(item => {
-            const priceText = item.children[3].textContent;
-            const price = parseFloat(priceText.replace('$', ''));
-            total += price;
+        itemsCarrito.forEach(item => {
+            const textoPrecio = item.children[3].textContent;
+            const precio = parseFloat(textoPrecio.replace('$', ''));
+            total += precio;
         });
-        document.getElementById('totalPrice').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('precioTotal').textContent = `$${total.toFixed(2)}`;
     }
 
-    document.getElementById('clearCartBtn').addEventListener('click', () => {
-        document.querySelector('#cart tbody').innerHTML = '';
-        updateTotalPrice();
+    document.getElementById('botonLimpiarCarrito').addEventListener('click', () => {
+        document.querySelector('#carrito tbody').innerHTML = '';
+        actualizarPrecioTotal();
     });
 
-    document.getElementById('checkoutBtn').addEventListener('click', () => {
+    document.getElementById('botonPagar').addEventListener('click', () => {
         alert('Proceso de pago no implementado.');
     });
 });
