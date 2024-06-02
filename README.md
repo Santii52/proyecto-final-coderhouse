@@ -1,5 +1,5 @@
-# TangoMarket: Mi Proyecto de E-commerceTangoMarket: Mi Proyecto de E-commerce 
-*Funcionalidades:
+# TangoMarket: Mi Proyecto de E-commerce
+## Funcionalidades:
 Carrito de Compras: Permite agregar, eliminar y modificar productos de manera intuitiva.
 
 **Formulario de Contacto: Con validación para asegurar la entrada de datos correctos.
