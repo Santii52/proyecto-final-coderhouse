@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 body {
     font-family: "Montserrat", sans-serif;
     overflow-x: hidden;
     background-image: linear-gradient(to right, #7003ff41, #133c9646);
 }
-
 
 /* =============================== */
 /* =========== <HEADER =========== */
@@ -16,8 +14,6 @@ body {
     background: #7429bb;
 }
 
-
-
 /* ================================= */
 /* =========== <//HEADER =========== */
 /* ================================= */
@@ -26,11 +22,10 @@ body {
 
 
 
-
-
 /* ============================= */
 /* =========== <MENU =========== */
 /* ============================= */
+
 #marcaNav {
     background-image: linear-gradient(to right, #70127c, #158bcf);
     background-clip: text;
@@ -41,22 +36,17 @@ body {
     font-size: 18px;
 }
 
-
 #menu li > a:hover {
-    
-    color: #840bf5;    
-
+    color: #840bf5;
 }
-
 
 #menu form > button {
     font-size: 15px;
 }
 
 #menu {
-
     z-index: 1;
-    background-image: linear-gradient(to right, #2a04d136,#dbdbdb3f,#dbdbdb46 ,#3a0db633);
+    background-image: linear-gradient(to right, #2a04d136, #dbdbdb3f, #dbdbdb46, #3a0db633);
 }
 
 #botonSuscribirse {
@@ -67,23 +57,11 @@ body {
 
 #botonSuscribirse:hover {
     background-image: linear-gradient(to right, #70127c, #15567c);
-
 }
 
 /* =============================== */
 /* =========== <//MENU =========== */
 /* =============================== */
-
-
-
-
-
-/* 
-.container {
-    height: 100vh;
-} */
-
-
 
 /* Estilos para las imágenes de productos */
 .product-image {
@@ -92,74 +70,55 @@ body {
     margin-bottom: 10px;
 }
 
-/* Otros estilos */
+/* estilos de los productos */
 .card {
     width: 18rem;
     margin-bottom: 20px;
 }
 
-
-/* Estilos para el contenedor del carrito */
-#cart {
-    background-image: linear-gradient(to right, #70127c, #15567c);
+/* el contenedor del carrito */
+#carrito {
+    background-image: linear-gradient(to right, #70127cbd, #15567cb6);
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
-
 }
 
 
-/* Estilos para el título del carrito */
-#cart h2 {
-    margin-bottom: 20px;
-}
 
 /* Estilos para la tabla del carrito */
-#cart table {
+#carrito table {
     width: 100%;
 }
 
 /* Estilos para los botones del carrito */
-#cart .btn {
+#carrito .btn {
     font-size: 1rem;
     padding: 10px 20px;
 }
 
 /* Estilos para el precio total del carrito */
 
-
 /* Estilos para los botones del carrito */
-#cart button {
+#carritoa button {
     margin-top: 20px;
 }
 
 .card {
     color: white;
-    background: linear-gradient(to right, #7004ecbe, #af7927);
-    border: 1px solid black;
+    background: linear-gradient(to right, #7004ec9d, #af7927);
 }
 
-
-
-/*  */
-
-#checkoutBtn {
+#botonPagar {
     background-color: #691b7c;
     border: none;
     color: white;
 }
 
-
-
-#clearCartBtn {
+#botonVaciarCarrito {
     background-color: #691b7c;
     border: none;
     color: white;
-}
-
-
-#clearCartBtn {
-    background-color: #a01919;
 }
 
 /* =============================== */
@@ -167,10 +126,10 @@ body {
 /* =============================== */
 
 footer {
-    background:#1a0730;
+    background: #1a0730;
     color: #9e9a9a;
     line-height: 15px;
-
+    margin-top: 30%;
 }
 
 /* ================================= */

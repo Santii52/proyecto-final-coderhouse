@@ -1,39 +1,69 @@
-document.addEventListener("DOMContentLoaded", async function () {
-    const url = 'https://api.mercadolibre.com/sites/MLA/search?q=iphone';
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formContacto");
+    const inputEmail = document.getElementById("inputEmail");
+    const inputNombre = document.getElementById("inputNombre");
+    const inputApellido = document.getElementById("inputApellido");
+    const motivoContacto = document.getElementById("motivoContacto");
+    const checkbox = document.getElementById("checkboxContactar");
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data);
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-        // Verificar si 'data' y 'data.results' están definidos y 'data.results' es un array
-        if (data && Array.isArray(data.results)) {
-            const contenedorProductos = document.getElementById('productosDisponibles');
+        // Validar campos
+        let mensajeDeError = "";
 
-            data.results.forEach(producto => {
-                if (producto && producto.title && producto.price && producto.permalink && producto.thumbnail) {
-                    const tarjetaProducto = document.createElement('div');
-                    tarjetaProducto.classList.add('col');
-                    tarjetaProducto.innerHTML = `
-                        <div class="card h-100">
-                            <img src="${producto.thumbnail}" class="card-img-top" alt="${producto.title}">
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">${producto.title}</h5>
-                                <p class="card-text">${producto.price}</p>
-                                <a href="${producto.permalink}" class="btn btn-primary mt-auto" target="_blank">Ver Producto</a>
-                            </div>
-                        </div>
-                    `;
-                    
-                    contenedorProductos.appendChild(tarjetaProducto);
-                } else {
-                    console.error("Uno o más productos tienen propiedades indefinidas:", producto);
-                }
-            });
-        } else {
-            console.error("La propiedad 'results' en la respuesta no está definida o no es un array:", data);
+        switch (true) {
+            case !validateEmail(inputEmail.value):
+                mensajeDeError = 'Introduzca un correo electrónico válido.';
+                break;
+            case inputNombre.value.trim() === "":
+                mensajeDeError = 'Introduzca su nombre.';
+                break;
+            case inputApellido.value.trim() === "":
+                mensajeDeError = 'Introduzca su apellido.';
+                break;
+            case motivoContacto.value.trim() === "":
+                mensajeDeError = 'Proporcione un motivo de contacto.';
+                break;
+            case !checkbox.checked:
+                mensajeDeError = 'Por favor, marque la casilla de verificación para confirmar que ha entendido y desea que nos pongamos en contacto con usted. Este paso es necesario para continuar.';
+                break;
         }
-    } catch (error) {
-        console.error('Error al obtener datos:', error);
+
+        if (mensajeDeError) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: mensajeDeError
+            });
+            return;
+        }
+
+        // Almacenar datos en localStorage
+        const formData = {
+            email: inputEmail.value,
+            nombre: inputNombre.value,
+            apellido: inputApellido.value,
+            motivo: motivoContacto.value
+        };
+        localStorage.setItem('formData', JSON.stringify(formData));
+
+        // Mostrar alerta de éxito
+        Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: 'El formulario se ha enviado correctamente.'
+        });
+
+        // Redirigir a otra página después de mostrar la alerta si es necesario
+        setTimeout(function () {
+            window.location.href = '../index.html';
+        }, 2000); // Redirige después de 2 segundos (2000 milisegundos)
+    });
+
+    // Función para validar correo electrónico
+    function validateEmail(email) {
+        const re = /\S+@\S+\.\S+/;
+        return re.test(email);
     }
 });
